@@ -1,75 +1,78 @@
-# React + TypeScript + Vite
+# DrawIt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Figma-inspired drawing application built with React, TypeScript, and Konva.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Drawing Tools**: Rectangle, Ellipse, Line, Pen (freehand), and Text
+- **Layer System**: Create, reorder (drag & drop), show/hide, and lock layers
+- **Object Properties**: Edit position, size, rotation, opacity, fill, and stroke
+- **Selection**: Click to select, Shift+Click for multi-select, drag for marquee selection
+- **Keyboard Shortcuts**: Delete/Backspace to remove, Escape to deselect
+- **Auto-Save**: All work is saved automatically to IndexedDB
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- npm (comes with Node.js)
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
+1. **Clone the repository**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+   ```bash
+   git clone <repository-url>
+   cd drawit
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. **Install dependencies**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+   ```bash
+   npm install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   Navigate to `http://localhost:5173`
+
+## Build for Production
+
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The built files will be in the `dist/` directory.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Tech Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **React 19** + TypeScript
+- **Vite** - Build tool
+- **Konva** + react-konva - Canvas rendering
+- **Zustand** - State management
+- **Dexie.js** - IndexedDB wrapper for persistence
+- **@dnd-kit** - Drag and drop for layer reordering
+- **Lucide React** - Icons
+
+## Project Structure
+
 ```
+src/
+├── components/
+│   ├── Canvas/       # Main drawing canvas
+│   ├── Toolbar/      # Bottom toolbar with tools
+│   └── Sidebar/      # Right sidebar (layers + properties)
+├── stores/           # Zustand store
+├── hooks/            # Custom React hooks
+├── db/               # Dexie database setup
+├── types/            # TypeScript type definitions
+└── utils/            # Utility functions
+```
+
+## License
+
+No license - All rights reserved.

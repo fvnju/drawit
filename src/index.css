@@ -1,0 +1,66 @@
+:root {
+  /* Background */
+  --bg-canvas: #1e1e1e;
+  --bg-panel: #2c2c2c;
+  --bg-toolbar: #383838;
+  --bg-hover: #444444;
+  --bg-active: #0d99ff;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #757575;
+
+  /* Borders */
+  --border-default: #444444;
+  --border-focus: #0d99ff;
+
+  /* Accent */
+  --accent-primary: #0d99ff;
+  --accent-success: #14ae5c;
+  --accent-warning: #ffcd29;
+  --accent-error: #f24822;
+
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--bg-canvas);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden; /* Prevent scrolling for canvas app */
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-hover);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
